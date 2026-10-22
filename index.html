@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OT&amp;E Planer</title>
+  <meta name="description" content="Operational Test &amp; Evaluation: Auftrag analysieren, COI, MOE/MOS und MOP/MOA ableiten, Flüge planen und Testkarten erzeugen.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23495437'/%3E%3Cpath d='M16 6v20M6 16h20' stroke='%23F2C14E' stroke-width='3'/%3E%3Ccircle cx='16' cy='16' r='6' fill='none' stroke='%23fff' stroke-width='2.5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/print.css">
+</head>
+<body>
+  <a class="skip" href="#view">Zum Inhalt springen</a>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" class="b-bg"/><path d="M16 5v22M5 16h22" class="b-x"/><circle cx="16" cy="16" r="6.5" class="b-o"/></svg>
+        <span>OT&amp;E Planer</span>
+      </div>
+      <label class="proj"><span class="sr">Projekt</span><select id="proj-select"></select></label>
+      <div class="top-act">
+        <button type="button" class="icon-btn" id="theme-btn" title="Hell / Dunkel" aria-label="Hell oder dunkel umschalten"></button>
+        <button type="button" class="btn sm" id="settings-btn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg><span>Einstellungen</span></button>
+      </div>
+    </header>
+    <nav id="nav" class="nav" aria-label="Arbeitsschritte"></nav>
+    <main id="view" class="main"></main>
+  </div>
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+  <div id="print-root"></div>
+  <noscript><p style="padding:2rem">Der OT&amp;E Planer benötigt JavaScript.</p></noscript>
+
+  <script src="js/store.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/extract.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/views.js"></script>
+  <script src="js/print.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

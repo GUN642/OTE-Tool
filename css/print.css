@@ -1,0 +1,77 @@
+/* OT&E Planer: Druck (Testkarten A4 quer, Testplan A4 hoch) */
+@page { size: A4 portrait; margin: 12mm 12mm 14mm; }
+@page cards { size: A4 landscape; margin: 9mm 10mm; }
+
+@media print {
+  html, body { background: #fff !important; color: #000 !important; }
+  :root { color-scheme: light; }
+  body.printing .app, body.printing .toasts, body.printing .modal-wrap, body.printing .drawer-wrap, body.printing .skip { display: none !important; }
+  body.printing #print-root { display: block !important; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body:not(.printing) .nav, body:not(.printing) .topbar, body:not(.printing) .toolbar { display: none; }
+}
+
+#print-root { font-family: 'Barlow', Arial, sans-serif; color: #000; font-size: 10pt; line-height: 1.35; }
+
+/* ---------- Testkarten ---------- */
+.print-cards .pc-page { page: cards; break-after: page; display: grid; grid-template-columns: 56% 1fr; gap: 7mm; height: 186mm; }
+.print-cards .pc-page:last-child { break-after: auto; }
+.pc-card { border: 1.2pt solid #000; height: 100%; display: flex; }
+table.pc { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 9.5pt; height: 100%; }
+table.pc td { border: .8pt solid #000; padding: 1.4mm 2mm; vertical-align: top; }
+table.pc td:last-child { width: 25%; }
+.pl { display: block; font-size: 7.5pt; color: #333; }
+.pl.big { font-size: 12pt; font-weight: 700; color: #000; }
+.pv { display: block; font-weight: 600; min-height: 4mm; }
+.pc-brand b { display: block; font-family: 'Barlow Condensed', Arial, sans-serif; font-size: 13pt; line-height: 1.1; }
+.pc-brand span { font-size: 8pt; color: #333; border-top: 2pt solid #E07B1F; display: inline-block; padding-top: .8mm; margin-top: .8mm; }
+.pc-title { font-family: 'Barlow Condensed', Arial, sans-serif; font-size: 15pt; font-weight: 700; vertical-align: middle !important; }
+.pc-obj { height: 18mm; }
+.pc-sec { font-size: 8.5pt; font-weight: 700; background: #eee; padding: .8mm 2mm !important; }
+.pc-rem { height: 34mm; }
+.pc-succ { font-size: 9pt; line-height: 1.8; }
+.box { display: inline-block; width: 3.2mm; height: 3.2mm; border: .8pt solid #000; vertical-align: -0.4mm; margin-right: 1.5mm; }
+.pc-no { text-align: center; }
+.pc-no .num { font-family: 'Barlow Condensed', Arial, sans-serif; font-size: 22pt; font-weight: 700; line-height: 1; }
+.pc-tp b { font-size: 10.5pt; }
+.pc-tha { color: #C00000; font-weight: 600; font-size: 9pt; height: 1%; }
+.pc-tha .pl { color: #C00000; font-weight: 700; font-size: 9pt; }
+.pc-limh { text-align: center; font-weight: 700; vertical-align: bottom !important; }
+.pc-body { font-size: 9pt; }
+.pc-s { margin-bottom: 2.2mm; }
+.pc-s b { display: block; font-size: 9.5pt; }
+.pc-lim { font-size: 8.5pt; font-weight: 600; }
+.pc-side { display: flex; flex-direction: column; min-height: 0; }
+.pc-side h3 { font-family: 'Barlow Condensed', Arial, sans-serif; font-size: 14pt; margin: 0 0 2mm; text-align: center; }
+.pc-side h3 + p, .pc-side p { margin: 0 0 3mm; font-size: 9pt; }
+.pc-side table.pc-list { border-collapse: collapse; width: 100%; font-size: 9pt; margin-bottom: 4mm; }
+.pc-list th, .pc-list td { border: .6pt solid #555; padding: 1mm 1.5mm; text-align: left; vertical-align: top; }
+.pc-list th { background: #eee; font-size: 8pt; }
+.pc-rating { border: .8pt solid #000; padding: 2mm; font-size: 8.5pt; margin-bottom: 3mm; }
+.pc-rating ul { list-style: none; margin: 1.5mm 0 0; padding: 0; columns: 2; column-gap: 4mm; }
+.pc-rating li { margin-bottom: .8mm; break-inside: avoid; }
+.pc-val { margin-top: 2mm; font-size: 10pt; }
+.pc-lines { flex: 1; background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 7.4mm, #999 7.4mm, #999 7.6mm); border-top: .6pt solid #999; }
+
+/* ---------- Testplan / Bericht ---------- */
+.pp-doc { font-size: 10pt; }
+.pp-head { border-bottom: 1.5pt solid #000; padding-bottom: 3mm; margin-bottom: 5mm; }
+.pp-kicker { font-size: 9pt; color: #333; border-left: 3pt solid #E07B1F; padding-left: 2mm; }
+.pp-head h1 { font-family: 'Barlow Condensed', Arial, sans-serif; font-size: 22pt; margin: 1mm 0 0; }
+.pp-head h2 { font-size: 13pt; margin: 0 0 2mm; font-weight: 600; }
+.pp-head p { margin: 1mm 0; }
+.pp-date { font-size: 9pt; color: #333; }
+.pp-doc h2 { font-family: 'Barlow Condensed', Arial, sans-serif; font-size: 15pt; margin: 6mm 0 1mm; break-after: avoid; }
+.pp-doc h3 { font-size: 11pt; margin: 4mm 0 1.5mm; break-after: avoid; }
+.pp-q { font-weight: 600; margin: 0 0 1mm; }
+.pp-meta { font-size: 9pt; color: #333; margin: 0 0 2mm; }
+table.pp { width: 100%; border-collapse: collapse; font-size: 9pt; margin-bottom: 2mm; }
+table.pp th, table.pp td { border: .6pt solid #555; padding: 1.2mm 1.8mm; text-align: left; vertical-align: top; }
+table.pp thead th { background: #DCE6EE; font-weight: 700; }
+table.pp.ms thead th { background: #4A6A87; color: #fff; }
+table.pp tr { break-inside: avoid; }
+.w-nr { width: 17mm; white-space: nowrap; }
+.pp-sub { font-size: 8pt; color: #444; margin-top: .6mm; }
+.pp-answer { border-left: 3pt solid #000; padding-left: 2mm; margin: 3mm 0; }
+.pp-coi { break-inside: auto; }
+.pp-annex { break-before: page; }
