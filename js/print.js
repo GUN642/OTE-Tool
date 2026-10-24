@@ -4,17 +4,15 @@
   const OTE = (window.OTE = window.OTE || {});
   const { esc, nl2br } = OTE.ui;
 
+  // Druckinhalt bleibt bis zum nächsten Druck stehen. Mobile Browser (Android) drucken
+  // asynchron und lösen "afterprint" sofort aus; ein Aufräumen dort würde sonst die
+  // aktuelle App-Seite statt des Berichts drucken. Auf dem Bildschirm ist #print-root unsichtbar.
   function doPrint(html, cls) {
     const root = document.getElementById('print-root');
     root.innerHTML = html;
+    document.body.classList.remove('print-cards', 'print-plan');
     document.body.classList.add('printing', cls);
-    const done = () => {
-      document.body.classList.remove('printing', cls);
-      root.innerHTML = '';
-      window.removeEventListener('afterprint', done);
-    };
-    window.addEventListener('afterprint', done);
-    setTimeout(() => window.print(), 60);
+    setTimeout(() => window.print(), 120);
   }
 
   const d = v => v ? new Date(v).toLocaleDateString('de-DE') : '';

@@ -6,7 +6,7 @@
   const STORAGE_KEY = 'ote-planer';
   const SESSION_KEY = 'ote-planer.apikey';
   OTE.SCHEMA = 1;
-  OTE.VERSION = '1.0.0';
+  OTE.VERSION = '1.0.1';
 
   const uid = () => Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
   OTE.uid = uid;

@@ -385,6 +385,8 @@
   };
 
   function bindEvents() {
+    // Druckzustand bei der nächsten Bedienung zurücksetzen (Browsermenü-Druck zeigt dann wieder die App)
+    document.addEventListener('pointerdown', () => { document.body.classList.remove('printing', 'print-cards', 'print-plan'); }, true);
     document.addEventListener('click', e => {
       const nav = e.target.closest('[data-nav]');
       if (nav) { go(nav.dataset.nav); return; }
